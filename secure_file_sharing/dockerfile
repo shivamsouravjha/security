@@ -1,0 +1,28 @@
+# Base image with Python 3.9
+FROM python:3.9-slim
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    libssl-dev openssl && \
+    rm -rf /var/lib/apt/lists/*
+
+# Set work directory
+WORKDIR /app
+
+# Copy project files
+COPY . .
+
+# Copy the SSL certificate and key
+
+COPY localhost.pem /etc/ssl/certs/server.crt
+COPY localhost-key.pem /etc/ssl/private/server.key
+
+# Update pip to avoid compatibility issues
+RUN pip install --no-cache-dir --upgrade pip
+
+# Install Python dependencies
+COPY requirements.txt /app/requirements.txt
+RUN pip install -v --no-cache-dir -r requirements.txt
+
+# Run the Django server with HTTPS
+CMD ["python", "manage.py", "runserver_plus", "--cert-file", "/etc/ssl/certs/server.crt", "--key-file", "/etc/ssl/private/server.key", "0.0.0.0:8000"]

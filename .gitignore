@@ -1,0 +1,2 @@
+.pytest_cache
+secure_file_sharing/test/__pycache__
