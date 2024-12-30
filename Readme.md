@@ -141,6 +141,8 @@ This application provides a secure platform for sharing files between users. Bot
 ![alt text](image.png)
 ![alt text](image-1.png)
 ![alt text](image-2.png)
+
+> **Note**: Once this setup is complete, all user roles can be managed directly through the platform interface without needing to access the admin panel again.
 ---
 
 ## Troubleshooting
