@@ -24,5 +24,11 @@ RUN pip install --no-cache-dir --upgrade pip
 COPY requirements.txt /app/requirements.txt
 RUN pip install -v --no-cache-dir -r requirements.txt
 
+COPY entrypoint.sh /app/entrypoint.sh
+RUN chmod 755 /app/entrypoint.sh
+
+# Use the entrypoint script as the default entry point
+ENTRYPOINT ["/app/entrypoint.sh"]
+
 # Run the Django server with HTTPS
 CMD ["python", "manage.py", "runserver_plus", "--cert-file", "/etc/ssl/certs/server.crt", "--key-file", "/etc/ssl/private/server.key", "0.0.0.0:8000"]

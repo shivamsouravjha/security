@@ -6,6 +6,6 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8000:8000"  # Map the container's port 8000 to the host's port 8000
+      - "8000:8000"
     volumes:
-      - .:/app  # Mount the project directory for easier development
+      - .:/app
