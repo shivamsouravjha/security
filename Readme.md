@@ -37,7 +37,7 @@ This application provides a secure platform for sharing files between users. Bot
 
 1. **Navigate to the frontend directory**:
    ```bash
-   cd secure-file-sharing-frontend
+   cd secure-file-sharing
    ```
 
 2. **Install dependencies**:
